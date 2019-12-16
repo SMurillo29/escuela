@@ -3,7 +3,9 @@ package com.escuela.escuela.model;
 public class PeticionDTO {
 	private String nombreCurso;
 	private String emailPro;
+	private String docEstudiante;
 	private Integer numSalon;
+	
 
 	public PeticionDTO() {
 
@@ -32,5 +34,15 @@ public class PeticionDTO {
 	public void setNumSalon(Integer codSalon) {
 		this.numSalon = codSalon;
 	}
+
+	public String getDocEstudiante() {
+		return docEstudiante;
+	}
+
+	public void setDocEstudiante(String docEstudiante) {
+		this.docEstudiante = docEstudiante;
+	}
+	
+	
 
 }

@@ -30,7 +30,8 @@ public class Estudiante {
 	private String apellido;
 	
 	@Email
-	@Column(name = "correo",length = 30)	private String correo;
+	@Column(name = "correo",length = 30)	
+	private String correo;
 	
 @ManyToMany
 @JoinTable(name ="Estudiante_curso"
