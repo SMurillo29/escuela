@@ -17,6 +17,8 @@ import javax.validation.constraints.Email;
 @Entity
 public class Profesor {
 	
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
@@ -31,10 +33,10 @@ public class Profesor {
 	private String apellido;
 	
 	@Email
-	@Column(name = "correo",length = 30)
+	@Column(name = "correo")
 	private String correo;
 	
-	@Column(name = "password",length = 20)
+	@Column(name = "password")
 	private String password;
 	
 	@ManyToMany

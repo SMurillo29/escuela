@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,16 +20,20 @@ import com.escuela.escuela.DAO.IProfesorDao;
 import com.escuela.escuela.model.Curso;
 import com.escuela.escuela.model.PeticionDTO;
 import com.escuela.escuela.model.Profesor;
+import com.escuela.escuela.services.Issuccess;
 
 @RequestMapping("/profesores")
 @RestController
 public class RestProfesorController {
 
+
+	private BCryptPasswordEncoder encoder;
+
 	@Autowired
-	IProfesorDao repo;
+	private IProfesorDao repo;
 	
 	@Autowired
-	ICursoDao  repocur;
+	private ICursoDao  repocur;
 	
 	
 
@@ -40,11 +44,14 @@ public class RestProfesorController {
 	}
 
 	@PostMapping("/insertar")
-	public void insertar(@RequestBody Profesor P) {
+	public Issuccess insertar(@RequestBody Profesor P) {
 		
-		//P.setPassword(encoder.encode(P.getPassword()));
+	 P.setPassword(encoder.encode(P.getPassword()));
+		
 
 		repo.save(P);
+		
+		return new Issuccess(true, "registro registrado exitosamente");
 	}
 	
 	@PostMapping("/rcurso")
